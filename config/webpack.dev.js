@@ -2,5 +2,6 @@ const parts = require('./webpack.parts');
 const merge = require('webpack-merge');
 
 module.exports = merge([
-    parts.devServer()
+    parts.devServer(),
+    parts.generateSourceMaps('eval-source-map')
 ]);
