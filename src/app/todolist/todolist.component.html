@@ -1,5 +1,4 @@
-<input #newTodo (keyup.enter)="add(newTodo.value); newTodo.value=''" />
-<button (click)="add(newTodo.value); newTodo.value=''">
-    Add
-</button>
-<app-todo *ngFor="let todo of todos; let i=index" [todo]="todo"></app-todo>
+<div class="todo-list">
+    <input id="new-task" placeholder="Enter new task here..." #newTodo (keyup.enter)="add(newTodo.value); newTodo.value=''" />
+    <app-todo *ngFor="let todo of todos; let i=index" [todo]="todo"></app-todo>
+</div>

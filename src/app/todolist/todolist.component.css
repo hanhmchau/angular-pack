@@ -1,0 +1,14 @@
+.todo-list {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#new-task {
+    border: 0;
+    padding: 20px 0;
+    font-size: 16px;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+}

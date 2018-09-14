@@ -17,6 +17,8 @@ export class TodoListComponent {
     }
 
     add(newTodo: string): void {
-        this.todoService.add(newTodo);
+        if (newTodo) {
+            this.todoService.add(newTodo);
+        }
     }
 }
