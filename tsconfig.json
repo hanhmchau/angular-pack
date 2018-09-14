@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
         "noImplicitAny": true,
-        "removeComments": true
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "emitDecoratorMetadata": true
     },
     "awesomeTypescriptLoaderOptions": {
         "useCache": true,

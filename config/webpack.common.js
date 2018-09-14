@@ -1,13 +1,25 @@
 const parts = require('./webpack.parts');
 const merge = require('webpack-merge');
+const path = require('path');
+
+const PATHS = {
+    src: path.join(__dirname, "../src"),
+    app: path.join(__dirname, "../src/app")
+};
 
 module.exports = merge([{
         entry: {
-            main: './src/index.ts'
+            main: path.resolve(PATHS.src, 'index.ts')
+        },
+        resolve: {
+            extensions: ['.ts', '.js']
         }
     },
-    parts.typeScript(),
     parts.html({
-        title: 'Sharks'
-    })
+        template: 'src/index.html'
+    }),
+    parts.typeScript(),
+    parts.raw({
+        include: PATHS.app
+    }),
 ]);

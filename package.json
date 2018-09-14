@@ -4,22 +4,43 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --mode development --watch\"",
+    "start": "nodemon --watch /config/*/** --exec \"webpack-dev-server --mode development --watch\"",
     "build": "webpack --env production",
+    "dev": "webpack --env development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@angular/compiler-cli": "^6.1.7",
+    "@ngtools/webpack": "^6.2.1",
+    "@types/node": "^10.9.4",
+    "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^5.2.1",
     "clean-webpack-plugin": "^0.1.19",
+    "core-js": "^2.5.7",
+    "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
     "nodemon": "^1.18.4",
+    "raw-loader": "^0.5.1",
+    "rxjs": "^6.3.2",
+    "script-ext-html-webpack-plugin": "^2.0.1",
+    "style-loader": "^0.23.0",
     "typescript": "^3.0.3",
     "webpack": "^4.18.0",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "zone.js": "^0.8.26"
+  },
+  "dependencies": {
+    "@angular/common": "^6.1.7",
+    "@angular/compiler": "^6.1.7",
+    "@angular/core": "^6.1.7",
+    "@angular/forms": "^6.1.7",
+    "@angular/platform-browser": "^6.1.7",
+    "@angular/platform-browser-dynamic": "^6.1.7"
   }
 }
