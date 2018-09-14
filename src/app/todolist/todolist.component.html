@@ -1,0 +1,5 @@
+<input #newTodo (keyup.enter)="add(newTodo.value); newTodo.value=''" />
+<button (click)="add(newTodo.value); newTodo.value=''">
+    Add
+</button>
+<app-todo *ngFor="let todo of todos; let i=index" [todo]="todo"></app-todo>
