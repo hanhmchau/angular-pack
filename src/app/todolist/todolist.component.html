@@ -1,6 +1,13 @@
 <div class="todo-list">
     <input id="new-task" placeholder="Enter new task here..." #newTodo (keyup.enter)="add(newTodo.value); newTodo.value=''" />
-    <div class="list">
-        <app-todo *ngFor="let todo of todos; let i=index" [todo]="todo"></app-todo>
-    </div>
+    <ng-container *ngIf="todos.length > 0; else noTodo">
+        <div class="list">
+            <app-todo *ngFor="let todo of todos; let i=index" [todo]="todo"></app-todo>
+        </div>    
+    </ng-container>
+    <ng-template #noTodo>
+        <div class="no-todo">
+            No to do found. Add something?
+        </div>
+    </ng-template>
 </div>
