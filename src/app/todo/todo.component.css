@@ -1,18 +1,16 @@
 .todo {
     border-bottom: 1px solid lightgray;
-    padding: 20px 0;
     width: 400px;
-}
-
-.todo:first-of-type {
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .todo input {
     border: none;
-    padding: 5px;
+    padding: 30px 0 30px 0;
     font-size: 15px;
-    width: 80%;
+    flex-grow: 1;
 }
 
 .todo button {
