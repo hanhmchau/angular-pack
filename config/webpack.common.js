@@ -9,6 +9,7 @@ const PATHS = {
 
 module.exports = merge([{
         entry: {
+            polyfill: path.resolve(PATHS.src, 'polyfill.ts'),
             main: path.resolve(PATHS.src, 'index.ts')
         },
         resolve: {
@@ -21,5 +22,5 @@ module.exports = merge([{
     parts.typeScript(),
     parts.raw({
         include: PATHS.app
-    }),
+   }),
 ]);

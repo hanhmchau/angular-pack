@@ -7,9 +7,6 @@
 }
 
 .todo-app {
-    width: 800px;
-}
-
-h2 {
-    font-family: sans-serif;
+    width: 100%;
+    max-width: 800px;
 }

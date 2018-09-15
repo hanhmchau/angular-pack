@@ -1,17 +1,24 @@
 const parts = require('./webpack.parts');
 const merge = require('webpack-merge');
 const path = require('path');
+const glob = require('glob');
 
 const PATHS = {
-    app: path.join(__dirname, "src/app"),
-    build: path.join(__dirname, "dist")
+    src: path.join(__dirname, '../src'),
+    app: path.join(__dirname, "../src/app"),
+    build: path.join(__dirname, "../dist")
 };
+
+console.log(PATHS);
 
 module.exports = merge([
     parts.generateSourceMaps('nosources-source-map'),
     parts.splitChunks(),
-    // parts.extractGlobalCSS({
-    //     exclude: PATHS.app
-    // }),
+    parts.extractGlobalCSS({
+        exclude: PATHS.app,
+    }),
+    parts.purifyCSS({
+        paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
+    }),
     parts.clean(PATHS.build),
 ]);

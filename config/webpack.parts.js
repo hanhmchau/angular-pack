@@ -1,9 +1,8 @@
-const {
-    CheckerPlugin
-} = require('awesome-typescript-loader');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PurifyCSSPlugin = require('purifycss-webpack');
 
 exports.devServer = ({
     host,
@@ -101,3 +100,25 @@ exports.extractGlobalCSS = ({
         plugins: [plugin]
     };
 };
+
+exports.purifyCSS = ({paths}) => ({
+    plugins: [
+        new PurifyCSSPlugin({
+            paths,
+            purifyOptions: {
+                minify: true
+            }
+        })
+    ]
+});
+
+exports.loadCSS = ({ include, exclude }) => ({
+    module: {
+        rules: [{
+            test: /\.css$/,
+            include,
+            exclude,
+            use: ['style-loader', 'css-loader']
+        }]
+    }
+});
