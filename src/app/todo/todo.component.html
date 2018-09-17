@@ -1,4 +1,11 @@
-<div class="todo" >
-    <input [(ngModel)]="todo.name" />
+<div class="todo" [class.active]="todo.done">
+    <!-- <input type="checkbox" [(ngModel)]="todo.done" /> -->
+    <div class="pretty p-default">
+        <input type="checkbox" [(ngModel)]="todo.done" />
+        <div class="state">
+            <label></label>
+        </div>
+    </div>
+    <input type="text" [(ngModel)]="todo.name" [disabled]="todo.done" />
     <button (click)="delete()">x</button>
 </div>

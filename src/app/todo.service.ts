@@ -14,10 +14,11 @@ export class TodoService {
 
     add(name: string): void {
         let id = Math.max(...this.todos.map(todo => todo.id));
-        this.todos.push({
-            id,
-            name
-        });
+        this.todos.push(new Todo(id, name));
+    }
+
+    flipState(todo: Todo): void {
+        todo.done = !todo.done;
     }
 
     delete(todo: Todo): void {

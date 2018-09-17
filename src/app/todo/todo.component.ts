@@ -15,4 +15,8 @@ export class TodoComponent {
     delete() {
         this.todoService.delete(this.todo);
     }
+
+    flipState(): void {
+        this.todoService.flipState(this.todo);
+    }
 }

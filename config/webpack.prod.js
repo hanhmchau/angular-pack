@@ -9,8 +9,6 @@ const PATHS = {
     build: path.join(__dirname, "../dist")
 };
 
-console.log(PATHS);
-
 module.exports = merge([
     parts.generateSourceMaps('nosources-source-map'),
     parts.splitChunks(),
