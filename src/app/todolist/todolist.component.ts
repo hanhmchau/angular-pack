@@ -13,7 +13,8 @@ export class TodoListComponent {
     constructor(private todoService: TodoService) { }
 
     ngOnInit(): void {
-        this.todos = this.todoService.getTodos();
+        this.todoService.getTodos()
+        .subscribe(todos => this.todos = todos);
     }
 
     add(newTodo: string): void {

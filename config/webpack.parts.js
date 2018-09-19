@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurifyCSSPlugin = require('purifycss-webpack');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 exports.devServer = ({
     host,
     port
@@ -121,4 +121,13 @@ exports.loadCSS = ({ include, exclude }) => ({
             use: ['style-loader', 'css-loader']
         }]
     }
+});
+
+exports.copy = () => ({
+    plugins: [
+        new CopyWebpackPlugin([{
+            from: 'dist',
+            to: 'D:/angular-todo-backie/public'
+        }])
+    ]
 });

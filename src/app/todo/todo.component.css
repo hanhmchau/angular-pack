@@ -21,11 +21,7 @@
     border: 1px solid lightgray;
 }
 
-.todo input[type=text]:disabled {
+.todo.done input[type=text] {
     background: initial;
     text-decoration: line-through;
-}
-
-.todo.active {
-
 }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todolist/todolist.component';
 import { TodoComponent } from './todo/todo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -13,7 +14,7 @@ import { TodoComponent } from './todo/todo.component';
         TodoListComponent,
         TodoComponent
     ],
-    imports: [BrowserModule, FormsModule ],
+    imports: [BrowserModule, FormsModule, HttpClientModule ],
     exports: [],
     providers: [
         // add injectable things here

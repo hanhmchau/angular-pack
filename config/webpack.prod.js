@@ -16,7 +16,11 @@ module.exports = merge([
         exclude: PATHS.app,
     }),
     parts.purifyCSS({
-        paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
+        paths: glob.sync(`${PATHS.app}/**/*.js`, {
+            nodir: true,
+        }),
+        verbose: true
     }),
     parts.clean(PATHS.build),
+    parts.copy(),
 ]);
