@@ -13,19 +13,20 @@ export class TodoService {
     }
 
     getTodos(): Observable<Todo[]> {
-        return this.http.get<Todo[]>(`${this.todosUrl}`);
+        return this.http.get<Todo[]>(this.todosUrl);
     }
 
-    add(name: string): void {
-        // let id = Math.max(...this.todos.map(todo => todo.id));
-        // this.todos.push(new Todo(id, name));
+    add(name: string): Observable<Todo> {
+        return this.http.post<Todo>(this.todosUrl, {
+            name
+        });
     }
 
-    flipState(todo: Todo): void {
-        // todo.done = !todo.done;
+    update(todo: Todo): Observable<any> {
+        return this.http.put<Todo>(`${this.todosUrl}/${todo.id}`, todo);
     }
 
-    delete(todo: Todo): void {
-        // this.todos.splice(this.todos.indexOf(todo), 1);
+    delete(todo: Todo): Observable<any> {
+        return this.http.delete(`${this.todosUrl}/${todo.id}`);
     }
 }

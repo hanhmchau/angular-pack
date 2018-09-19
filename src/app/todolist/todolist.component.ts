@@ -9,17 +9,36 @@ import Todo from '../todo';
 })
 export class TodoListComponent {
     todos: Todo[] = [];
+    loaded: boolean = false;
+    showOnlyNotDone: boolean = false;
     
     constructor(private todoService: TodoService) { }
 
     ngOnInit(): void {
         this.todoService.getTodos()
-        .subscribe(todos => this.todos = todos);
+        .subscribe(todos => {
+            this.todos = todos;
+            this.loaded = true;
+        });
     }
 
-    add(newTodo: string): void {
-        if (newTodo) {
-            this.todoService.add(newTodo);
+    filteredTodos(): Todo[] {
+        return this.showOnlyNotDone ? this.todos.filter(t => !t.done) : this.todos;
+    }
+
+    onDelete(todo: Todo) {
+        this.todos.splice(this.todos.indexOf(todo), 1);
+    }
+
+    add(name: string): void {
+        if (name.trim().length) {
+            const newTodo = {
+                id: 0,
+                name,
+                done: false
+            };
+            this.todos.push(newTodo);
+            this.todoService.add(name).subscribe(t => newTodo.id = t.id);
         }
     }
 }

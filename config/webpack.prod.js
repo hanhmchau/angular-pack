@@ -6,8 +6,11 @@ const glob = require('glob');
 const PATHS = {
     src: path.join(__dirname, '../src'),
     app: path.join(__dirname, "../src/app"),
-    build: path.join(__dirname, "../dist")
+    build: path.join(__dirname, "../dist"),
+    public: 'D:/angular-todo-backie/public'
 };
+
+const bundle = path.join(PATHS.build, 'main.js');
 
 module.exports = merge([
     parts.generateSourceMaps('nosources-source-map'),
@@ -16,11 +19,10 @@ module.exports = merge([
         exclude: PATHS.app,
     }),
     parts.purifyCSS({
-        paths: glob.sync(`${PATHS.app}/**/*.js`, {
-            nodir: true,
-        }),
+        paths: [bundle],
         verbose: true
     }),
-    parts.clean(PATHS.build),
-    parts.copy(),
+    // parts.clean(PATHS.build),
+    parts.clean(PATHS.public),
+    parts.copy(PATHS.public)
 ]);

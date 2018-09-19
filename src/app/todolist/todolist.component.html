@@ -2,11 +2,11 @@
     <input id="new-task" placeholder="Enter new task here..." #newTodo (keyup.enter)="add(newTodo.value); newTodo.value=''" />
     <ng-container *ngIf="todos.length > 0; else noTodo">
         <div class="list">
-            <app-todo *ngFor="let todo of todos; let i=index" [todo]="todo"></app-todo>
-        </div>    
+            <app-todo *ngFor="let todo of filteredTodos(); let i=index" [todo]="todo" (deleted)="onDelete($event)"></app-todo>
+        </div>
     </ng-container>
     <ng-template #noTodo>
-        <div class="no-todo">
+        <div class="no-todo" *ngIf="loaded">
             No to do found. Add something?
         </div>
     </ng-template>

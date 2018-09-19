@@ -1,6 +1,5 @@
 export default class Todo {
+    id: number;
+    name: string;
     done: boolean = false;
-    constructor(public id: number, public name: string) {
-
-    }
 }

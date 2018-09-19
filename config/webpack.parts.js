@@ -1,4 +1,6 @@
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const {
+    CheckerPlugin
+} = require('awesome-typescript-loader');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -47,7 +49,9 @@ exports.raw = ({
 });
 
 exports.clean = path => ({
-    plugins: [new CleanWebpackPlugin([path])]
+    plugins: [new CleanWebpackPlugin([path], {
+        allowExternal: true
+    })]
 });
 
 exports.html = options => ({
@@ -101,7 +105,9 @@ exports.extractGlobalCSS = ({
     };
 };
 
-exports.purifyCSS = ({paths}) => ({
+exports.purifyCSS = ({
+    paths
+}) => ({
     plugins: [
         new PurifyCSSPlugin({
             paths,
@@ -112,7 +118,10 @@ exports.purifyCSS = ({paths}) => ({
     ]
 });
 
-exports.loadCSS = ({ include, exclude }) => ({
+exports.loadCSS = ({
+    include,
+    exclude
+}) => ({
     module: {
         rules: [{
             test: /\.css$/,
@@ -123,11 +132,11 @@ exports.loadCSS = ({ include, exclude }) => ({
     }
 });
 
-exports.copy = () => ({
+exports.copy = path => ({
     plugins: [
         new CopyWebpackPlugin([{
             from: 'dist',
-            to: 'D:/angular-todo-backie/public'
+            to: path
         }])
     ]
 });

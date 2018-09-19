@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import Todo from '../todo';
 import { TodoService } from '../todo.service';
 
@@ -9,14 +9,20 @@ import { TodoService } from '../todo.service';
 })
 export class TodoComponent {
     @Input() todo: Todo;
+    @Output() deleted = new EventEmitter<Todo>();
     
     constructor(private todoService: TodoService) { }
 
-    delete() {
-        this.todoService.delete(this.todo);
+    update() {
+        if (this.todo.name.length) {
+            this.todoService.update(this.todo)
+                .subscribe();
+        }
     }
 
-    flipState(): void {
-        this.todoService.flipState(this.todo);
+    delete() {
+        this.deleted.emit(this.todo);
+        this.todoService.delete(this.todo)
+        .subscribe();
     }
 }
