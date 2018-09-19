@@ -1,5 +1,5 @@
 const consts = {
-    API: 'http://localhost:3001/api'
+    API: 'https://angular-todo-full.herokuapp.com/api'
 };
 
 export default consts;
